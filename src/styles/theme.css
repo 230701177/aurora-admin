@@ -1,0 +1,629 @@
+/* ...theme styles... */
+/* theme.css - Aurora Dark Theme */
+
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+:root {
+  /* ========================
+     Base Color Palette
+     ======================== */
+  
+  /* Neutral Colors */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+  
+  /* ========================
+     Background Colors
+     ======================== */
+  
+  /* Main Backgrounds */
+  --color-background-primary: #0f1117;      /* Main page background */
+  --color-background-secondary: #161a23;    /* Cards, panels */
+  --color-background-tertiary: #1c2130;     /* Nested cards, modals */
+  --color-background-quaternary: #242a3d;   /* Hover states */
+  
+  /* Surface Colors */
+  --color-surface-primary: #161a23;         /* Primary surfaces */
+  --color-surface-secondary: #1e222e;       /* Secondary surfaces */
+  --color-surface-tertiary: #242a3d;        /* Tertiary surfaces */
+  
+  /* ========================
+     Text Colors
+     ======================== */
+  
+  /* Text Hierarchy */
+  --color-text-primary: #f8fafc;            /* Main content, headings */
+  --color-text-secondary: #94a3b8;          /* Labels, descriptions */
+  --color-text-tertiary: #64748b;           /* Placeholders, hints */
+  --color-text-muted: #475569;              /* Disabled text */
+  --color-text-inverse: #0f172a;            /* Text on colored backgrounds */
+  
+  /* Text on Backgrounds */
+  --color-text-on-primary: #ffffff;
+  --color-text-on-secondary: #f1f5f9;
+  --color-text-on-tertiary: #e2e8f0;
+  
+  /* ========================
+     Accent Colors
+     ======================== */
+  
+  /* Primary Brand Color */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;             /* Primary accent */
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+  
+  /* Status Colors */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;             /* Success */
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
+  --color-success-950: #052e16;
+  
+  --color-warning-50: #fefce8;
+  --color-warning-100: #fef9c3;
+  --color-warning-200: #fef08a;
+  --color-warning-300: #fde047;
+  --color-warning-400: #facc15;             /* Warning */
+  --color-warning-500: #eab308;
+  --color-warning-600: #ca8a04;
+  --color-warning-700: #a16207;
+  --color-warning-800: #854d0e;
+  --color-warning-900: #713f12;
+  --color-warning-950: #422006;
+  
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;              /* Danger */
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-800: #991b1b;
+  --color-danger-900: #7f1d1d;
+  --color-danger-950: #450a0a;
+  
+  --color-info-50: #f0f9ff;
+  --color-info-100: #e0f2fe;
+  --color-info-200: #bae6fd;
+  --color-info-300: #7dd3fc;
+  --color-info-400: #38bdf8;
+  --color-info-500: #0ea5e9;
+  --color-info-600: #0284c7;
+  --color-info-700: #0369a1;
+  --color-info-800: #075985;
+  --color-info-900: #0c4a6e;
+  --color-info-950: #082f49;
+  
+  /* ========================
+     Border & Divider Colors
+     ======================== */
+  
+  --color-border-primary: rgba(255, 255, 255, 0.1);
+  --color-border-secondary: rgba(255, 255, 255, 0.07);
+  --color-border-tertiary: rgba(255, 255, 255, 0.05);
+  --color-border-inverse: rgba(0, 0, 0, 0.2);
+  
+  /* Specific border colors */
+  --color-border-card: #2a2f3a;
+  --color-border-input: #374151;
+  --color-border-table: #2a2f3a;
+  --color-border-divider: rgba(255, 255, 255, 0.05);
+  
+  /* ========================
+     Shadow & Elevation
+     ======================== */
+  
+  /* Shadow colors */
+  --color-shadow-light: rgba(0, 0, 0, 0.1);
+  --color-shadow-medium: rgba(0, 0, 0, 0.2);
+  --color-shadow-heavy: rgba(0, 0, 0, 0.3);
+  
+  /* Shadow presets */
+  --shadow-xs: 0 1px 2px 0 var(--color-shadow-light);
+  --shadow-sm: 0 1px 3px 0 var(--color-shadow-light), 0 1px 2px -1px var(--color-shadow-light);
+  --shadow-md: 0 4px 6px -1px var(--color-shadow-medium), 0 2px 4px -2px var(--color-shadow-medium);
+  --shadow-lg: 0 10px 15px -3px var(--color-shadow-medium), 0 4px 6px -4px var(--color-shadow-medium);
+  --shadow-xl: 0 20px 25px -5px var(--color-shadow-heavy), 0 8px 10px -6px var(--color-shadow-heavy);
+  --shadow-2xl: 0 25px 50px -12px var(--color-shadow-heavy);
+  
+  /* Inner shadows */
+  --shadow-inner: inset 0 2px 4px 0 var(--color-shadow-medium);
+  
+  /* ========================
+     Component Colors
+     ======================== */
+  
+  /* Button Colors */
+  --color-button-primary: var(--color-primary-500);
+  --color-button-primary-hover: var(--color-primary-600);
+  --color-button-primary-active: var(--color-primary-700);
+  --color-button-primary-text: var(--color-text-on-primary);
+  
+  --color-button-secondary: var(--color-surface-secondary);
+  --color-button-secondary-hover: var(--color-surface-tertiary);
+  --color-button-secondary-active: var(--color-surface-primary);
+  --color-button-secondary-text: var(--color-text-secondary);
+  
+  --color-button-danger: var(--color-danger-500);
+  --color-button-danger-hover: var(--color-danger-600);
+  --color-button-danger-active: var(--color-danger-700);
+  --color-button-danger-text: var(--color-text-on-primary);
+  
+  --color-button-success: var(--color-success-500);
+  --color-button-success-hover: var(--color-success-600);
+  --color-button-success-active: var(--color-success-700);
+  --color-button-success-text: var(--color-text-on-primary);
+  
+  --color-button-warning: var(--color-warning-500);
+  --color-button-warning-hover: var(--color-warning-600);
+  --color-button-warning-active: var(--color-warning-700);
+  --color-button-warning-text: var(--color-text-inverse);
+  
+  --color-button-disabled: var(--color-surface-tertiary);
+  --color-button-disabled-text: var(--color-text-muted);
+  
+  /* Badge Colors */
+  --color-badge-primary: var(--color-primary-500);
+  --color-badge-primary-text: var(--color-text-on-primary);
+  
+  --color-badge-success: var(--color-success-500);
+  --color-badge-success-text: var(--color-text-on-primary);
+  
+  --color-badge-warning: var(--color-warning-500);
+  --color-badge-warning-text: var(--color-text-inverse);
+  
+  --color-badge-danger: var(--color-danger-500);
+  --color-badge-danger-text: var(--color-text-on-primary);
+  
+  --color-badge-info: var(--color-info-500);
+  --color-badge-info-text: var(--color-text-on-primary);
+  
+  --color-badge-neutral: var(--color-surface-tertiary);
+  --color-badge-neutral-text: var(--color-text-secondary);
+  
+  /* Card Colors */
+  --color-card-background: var(--color-surface-primary);
+  --color-card-border: var(--color-border-card);
+  --color-card-shadow: var(--shadow-md);
+  --color-card-hover: var(--color-surface-secondary);
+  
+  /* Input Colors */
+  --color-input-background: var(--color-surface-primary);
+  --color-input-border: var(--color-border-input);
+  --color-input-border-focus: var(--color-primary-500);
+  --color-input-placeholder: var(--color-text-tertiary);
+  --color-input-text: var(--color-text-primary);
+  --color-input-disabled: var(--color-surface-tertiary);
+  
+  /* Table Colors */
+  --color-table-background: var(--color-surface-primary);
+  --color-table-border: var(--color-border-table);
+  --color-table-header: var(--color-surface-secondary);
+  --color-table-row-hover: var(--color-surface-tertiary);
+  --color-table-row-stripe: var(--color-surface-secondary);
+  
+  /* Link Colors */
+  --color-link: var(--color-primary-400);
+  --color-link-hover: var(--color-primary-300);
+  --color-link-visited: var(--color-primary-500);
+  --color-link-active: var(--color-primary-600);
+  
+  /* Status Indicators */
+  --color-status-online: var(--color-success-500);
+  --color-status-offline: var(--color-danger-500);
+  --color-status-degraded: var(--color-warning-500);
+  --color-status-maintenance: var(--color-info-500);
+  
+  /* Chart Colors */
+  --color-chart-primary: var(--color-primary-500);
+  --color-chart-secondary: var(--color-success-500);
+  --color-chart-tertiary: var(--color-warning-500);
+  --color-chart-quaternary: var(--color-danger-500);
+  --color-chart-grid: var(--color-border-secondary);
+  --color-chart-text: var(--color-text-secondary);
+  
+  /* ========================
+     Typography
+     ======================== */
+  
+  /* Font Families */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+  --font-family-serif: Georgia, Times, 'Times New Roman', serif;
+  
+  /* Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+  
+  /* ========================
+     Spacing & Sizing
+     ======================== */
+  
+  /* Spacing Scale */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 0.125rem;    /* 2px */
+  --space-1: 0.25rem;       /* 4px */
+  --space-1-5: 0.375rem;    /* 6px */
+  --space-2: 0.5rem;        /* 8px */
+  --space-2-5: 0.625rem;    /* 10px */
+  --space-3: 0.75rem;       /* 12px */
+  --space-3-5: 0.875rem;    /* 14px */
+  --space-4: 1rem;          /* 16px */
+  --space-5: 1.25rem;       /* 20px */
+  --space-6: 1.5rem;        /* 24px */
+  --space-7: 1.75rem;       /* 28px */
+  --space-8: 2rem;          /* 32px */
+  --space-9: 2.25rem;       /* 36px */
+  --space-10: 2.5rem;       /* 40px */
+  --space-11: 2.75rem;      /* 44px */
+  --space-12: 3rem;         /* 48px */
+  --space-14: 3.5rem;       /* 56px */
+  --space-16: 4rem;         /* 64px */
+  --space-20: 5rem;         /* 80px */
+  --space-24: 6rem;         /* 96px */
+  --space-28: 7rem;         /* 112px */
+  --space-32: 8rem;         /* 128px */
+  --space-36: 9rem;         /* 144px */
+  --space-40: 10rem;        /* 160px */
+  --space-44: 11rem;        /* 176px */
+  --space-48: 12rem;        /* 192px */
+  --space-52: 13rem;        /* 208px */
+  --space-56: 14rem;        /* 224px */
+  --space-60: 15rem;        /* 240px */
+  --space-64: 16rem;        /* 256px */
+  --space-72: 18rem;        /* 288px */
+  --space-80: 20rem;        /* 320px */
+  --space-96: 24rem;        /* 384px */
+  
+  /* ========================
+     Border Radius
+     ======================== */
+  
+  --radius-none: 0;
+  --radius-sm: 0.125rem;    /* 2px */
+  --radius-default: 0.25rem; /* 4px */
+  --radius-md: 0.375rem;    /* 6px */
+  --radius-lg: 0.5rem;      /* 8px */
+  --radius-xl: 0.75rem;     /* 12px */
+  --radius-2xl: 1rem;       /* 16px */
+  --radius-3xl: 1.5rem;     /* 24px */
+  --radius-full: 9999px;
+  
+  /* ========================
+     Transitions & Animations
+     ======================== */
+  
+  /* Transition Durations */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+  
+  /* Transition Timing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Animation Delays */
+  --delay-0: 0s;
+  --delay-75: 75ms;
+  --delay-100: 100ms;
+  --delay-150: 150ms;
+  --delay-200: 200ms;
+  --delay-300: 300ms;
+  --delay-500: 500ms;
+  --delay-700: 700ms;
+  --delay-1000: 1000ms;
+  
+  /* ========================
+     Z-Index Layers
+     ======================== */
+  
+  --z-index-auto: auto;
+  --z-index-0: 0;
+  --z-index-10: 10;
+  --z-index-20: 20;
+  --z-index-30: 30;
+  --z-index-40: 40;
+  --z-index-50: 50;
+  --z-index-100: 100;
+  --z-index-200: 200;
+  --z-index-300: 300;
+  --z-index-400: 400;
+  --z-index-500: 500;
+  --z-index-600: 600;
+  --z-index-700: 700;
+  --z-index-800: 800;
+  --z-index-900: 900;
+  --z-index-1000: 1000;
+  
+  /* Specific Z-Index Layers */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+  --z-index-toast: 1080;
+}
+
+/* ==========================================================================
+   Theme Utility Classes
+   ========================================================================== */
+
+/* Color Utilities */
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+.text-muted { color: var(--color-text-muted); }
+
+.bg-primary { background-color: var(--color-background-primary); }
+.bg-secondary { background-color: var(--color-background-secondary); }
+.bg-tertiary { background-color: var(--color-background-tertiary); }
+
+/* Status Color Utilities */
+.text-success { color: var(--color-success-500); }
+.text-warning { color: var(--color-warning-500); }
+.text-danger { color: var(--color-danger-500); }
+.text-info { color: var(--color-info-500); }
+
+.bg-success { background-color: var(--color-success-500); }
+.bg-warning { background-color: var(--color-warning-500); }
+.bg-danger { background-color: var(--color-danger-500); }
+.bg-info { background-color: var(--color-info-500); }
+
+/* Border Utilities */
+.border-primary { border-color: var(--color-border-primary); }
+.border-secondary { border-color: var(--color-border-secondary); }
+.border-tertiary { border-color: var(--color-border-tertiary); }
+
+/* Shadow Utilities */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Spacing Utilities */
+.m-0 { margin: var(--space-0); }
+.m-1 { margin: var(--space-1); }
+.m-2 { margin: var(--space-2); }
+.m-4 { margin: var(--space-4); }
+.m-8 { margin: var(--space-8); }
+
+.p-0 { padding: var(--space-0); }
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-4 { padding: var(--space-4); }
+.p-8 { padding: var(--space-8); }
+
+/* Radius Utilities */
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+
+/* Typography Utilities */
+.font-sans { font-family: var(--font-family-sans); }
+.font-mono { font-family: var(--font-family-mono); }
+
+.font-thin { font-weight: var(--font-weight-thin); }
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Transition Utilities */
+.transition-fast { transition-duration: var(--duration-150); }
+.transition-normal { transition-duration: var(--duration-300); }
+.transition-slow { transition-duration: var(--duration-500); }
+
+.ease-in { transition-timing-function: var(--ease-in); }
+.ease-out { transition-timing-function: var(--ease-out); }
+.ease-in-out { transition-timing-function: var(--ease-in-out); }
+
+/* ==========================================================================
+   Component-Specific Theme Variables
+   ========================================================================== */
+
+/* Button Theme Mixins */
+.btn-primary {
+  background-color: var(--color-button-primary);
+  color: var(--color-button-primary-text);
+  border-color: var(--color-button-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-button-primary-hover);
+  border-color: var(--color-button-primary-hover);
+}
+
+.btn-primary:active {
+  background-color: var(--color-button-primary-active);
+  border-color: var(--color-button-primary-active);
+}
+
+.btn-danger {
+  background-color: var(--color-button-danger);
+  color: var(--color-button-danger-text);
+  border-color: var(--color-button-danger);
+}
+
+.btn-danger:hover {
+  background-color: var(--color-button-danger-hover);
+  border-color: var(--color-button-danger-hover);
+}
+
+/* Card Theme Mixins */
+.card {
+  background-color: var(--color-card-background);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--color-card-shadow);
+}
+
+.card:hover {
+  background-color: var(--color-card-hover);
+}
+
+/* Input Theme Mixins */
+.input {
+  background-color: var(--color-input-background);
+  border: 1px solid var(--color-input-border);
+  color: var(--color-input-text);
+}
+
+.input:focus {
+  border-color: var(--color-input-border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+/* Table Theme Mixins */
+.table {
+  background-color: var(--color-table-background);
+  border: 1px solid var(--color-table-border);
+}
+
+.table th {
+  background-color: var(--color-table-header);
+}
+
+.table tr:hover {
+  background-color: var(--color-table-row-hover);
+}
+
+.table tr:nth-child(even) {
+  background-color: var(--color-table-row-stripe);
+}
+
+/* Badge Theme Mixins */
+.badge-primary {
+  background-color: var(--color-badge-primary);
+  color: var(--color-badge-primary-text);
+}
+
+.badge-success {
+  background-color: var(--color-badge-success);
+  color: var(--color-badge-success-text);
+}
+
+.badge-warning {
+  background-color: var(--color-badge-warning);
+  color: var(--color-badge-warning-text);
+}
+
+.badge-danger {
+  background-color: var(--color-badge-danger);
+  color: var(--color-badge-danger-text);
+}
+
+/* Status Indicator Mixins */
+.status-online {
+  background-color: var(--color-status-online);
+}
+
+.status-offline {
+  background-color: var(--color-status-offline);
+}
+
+.status-degraded {
+  background-color: var(--color-status-degraded);
+}
+
+/* ==========================================================================
+   Dark Theme Only Configuration
+   ========================================================================== */
+
+/* Ensure the dark theme is always applied */
+@media (prefers-color-scheme: light) {
+  /* Override any system light theme preference */
+  /* No light theme variables are defined */
+}
+
+/* Print Media Adjustments */
+@media print {
+  :root {
+    /* Adjust for printing if needed */
+    --color-background-primary: #ffffff;
+    --color-text-primary: #000000;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    /* Increase contrast for accessibility */
+    --color-border-primary: rgba(255, 255, 255, 0.2);
+    --color-text-secondary: #cbd5e1;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-75: 0ms;
+    --duration-100: 0ms;
+    --duration-150: 0ms;
+    --duration-200: 0ms;
+    --duration-300: 0ms;
+    --duration-500: 0ms;
+  }
+}

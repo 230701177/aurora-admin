@@ -1,38 +1,421 @@
-.App {
-  text-align: center;
-}
+/* App.css - Global layout and structural styles */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* ==========================================================================
+   Root App Container
+   ========================================================================== */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
   min-height: 100vh;
+  background-color: var(--color-background-primary, #0f1117);
+  color: var(--color-text-primary, #f8fafc);
+  font-family: var(--font-family-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ==========================================================================
+   Loading States
+   ========================================================================== */
+
+.app-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: var(--color-background-primary, #0f1117);
+  z-index: 9999;
+  gap: 1.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--color-primary-500, #3b82f6);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-@keyframes App-logo-spin {
+.loading-text {
+  font-size: 1rem;
+  color: var(--color-text-secondary, #94a3b8);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Layout Structure
+   ========================================================================== */
+
+/* Main content wrapper - applied via PageLayout */
+.app-content {
+  min-height: calc(100vh - 60px); /* Subtract topbar height */
+  margin-top: 60px; /* Topbar height */
+  margin-left: 240px; /* Sidebar width */
+  transition: margin-left 0.3s ease;
+  position: relative;
+}
+
+/* When sidebar is collapsed */
+.app-content.sidebar-collapsed {
+  margin-left: 64px;
+}
+
+/* ==========================================================================
+   Scroll Behavior
+   ========================================================================== */
+
+/* Main content scrolling */
+.main-content-scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 60px);
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for main content */
+.main-content-scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content-scrollable::-webkit-scrollbar-thumb {
+  background: var(--color-surface-secondary, #1e222e);
+  border-radius: 4px;
+}
+
+.main-content-scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-tertiary, #242a3d);
+}
+
+/* Firefox scrollbar */
+.main-content-scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-surface-secondary, #1e222e) transparent;
+}
+
+/* ==========================================================================
+   Content Container
+   ========================================================================== */
+
+.content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Content grid for cards */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.content-grid-wide {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   Page Transitions
+   ========================================================================== */
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ==========================================================================
+   Responsive Layout
+   ========================================================================== */
+
+/* Large desktop (1440px and up) */
+@media (min-width: 1440px) {
+  .content-container {
+    max-width: 1400px;
+    padding: 2.5rem;
+  }
+}
+
+/* Desktop (992px to 1439px) */
+@media (min-width: 992px) and (max-width: 1439px) {
+  .content-container {
+    max-width: 1200px;
+    padding: 2rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+/* Tablet (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .app-content {
+    margin-left: 0;
+  }
+  
+  .content-container {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Mobile (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .app-content {
+    margin-left: 0;
+  }
+  
+  .content-container {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .main-content-scrollable {
+    height: calc(100vh - 56px); /* Smaller topbar on mobile */
+  }
+}
+
+/* Small mobile (up to 479px) */
+@media (max-width: 479px) {
+  .app-content {
+    margin-left: 0;
+    margin-top: 56px; /* Smaller topbar */
+  }
+  
+  .content-container {
+    max-width: 100%;
+    padding: 0.75rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .main-content-scrollable {
+    height: calc(100vh - 56px);
+  }
+}
+
+/* ==========================================================================
+   Sidebar Collapsed States
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .app-content:not(.sidebar-collapsed) {
+    margin-left: 240px;
+    overflow: hidden;
+  }
+  
+  .app-content.sidebar-collapsed {
+    margin-left: 0;
+  }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  .app {
+    background-color: white;
+    color: black;
+  }
+  
+  .app-content {
+    margin: 0;
+    height: auto;
+  }
+  
+  .main-content-scrollable {
+    overflow: visible;
+    height: auto;
+  }
+  
+  .content-container {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Prevent text selection */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Prevent image dragging */
+.no-drag {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+/* Truncate text with ellipsis */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================================================
+   Focus States
+   ========================================================================== */
+
+/* Focus visible polyfill */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.focus-visible {
+  outline: 2px solid var(--color-primary-400, #60a5fa);
+  outline-offset: 2px;
+  border-radius: var(--radius-md, 0.375rem);
+}
+
+/* ==========================================================================
+   Dark Theme Enforcement
+   ========================================================================== */
+
+/* Force dark theme even if system prefers light */
+@media (prefers-color-scheme: light) {
+  .app {
+    background-color: var(--color-background-primary, #0f1117) !important;
+    color: var(--color-text-primary, #f8fafc) !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .app {
+    --color-border-primary: rgba(255, 255, 255, 0.2);
+    --color-text-secondary: #cbd5e1;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

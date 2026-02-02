@@ -1,0 +1,77 @@
+/* Enhanced Page Transition Animations */
+
+.page-transition {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Fade In Animation */
+.page-transition.fadeIn {
+    animation-name: pageTransitionFadeIn;
+}
+
+/* Fade Out Animation */
+.page-transition.fadeOut {
+    animation-name: pageTransitionFadeOut;
+}
+
+@keyframes pageTransitionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(40px) scale(0.96);
+        filter: blur(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes pageTransitionFadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-40px) scale(0.96);
+        filter: blur(6px);
+    }
+}
+
+/* Smooth transition for all page content */
+.page-transition>* {
+    will-change: transform, opacity, filter;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .page-transition {
+        animation-duration: 0.01ms !important;
+    }
+
+    @keyframes pageTransitionFadeIn {
+
+        from,
+        to {
+            opacity: 1;
+            transform: none;
+            filter: none;
+        }
+    }
+
+    @keyframes pageTransitionFadeOut {
+
+        from,
+        to {
+            opacity: 1;
+            transform: none;
+            filter: none;
+        }
+    }
+}
