@@ -1,70 +1,240 @@
-# Getting Started with Create React App
+<h1 align="center">🌌 Aurora — Self-Hosted Server Admin Panel</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <strong>A dark-themed, self-hosted server administration dashboard.</strong>
+</p>
 
-## Available Scripts
+<p align="center">
+  Simple • Secure • Cost-Efficient
+</p>
 
-In the project directory, you can run:
+<hr/>
 
-### `npm start`
+<h2>🚀 Overview</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p>
+Aurora is a <strong>self-hosted server administration dashboard</strong> designed to monitor,
+manage, and control services running on personal or small-scale servers.
+It prioritizes <strong>clarity, stability, and performance</strong> while avoiding expensive cloud dependencies.
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p>
+Aurora acts as the <strong>central command center</strong> for the <strong>fyxhub</strong> ecosystem.
+</p>
 
-### `npm test`
+<hr/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h2>✨ Features</h2>
 
-### `npm run build`
+<ul>
+  <li>📊 <strong>Real-Time Monitoring</strong>
+    <ul>
+      <li>CPU, RAM, Disk, Network usage</li>
+      <li>Smooth charts and usage indicators</li>
+    </ul>
+  </li>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <li>🧩 <strong>Service Management</strong>
+    <ul>
+      <li>View running / stopped services</li>
+      <li>Restart or manage services from the UI</li>
+    </ul>
+  </li>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  <li>📜 <strong>Centralized Logs</strong>
+    <ul>
+      <li>System and application logs</li>
+      <li>Clean and readable log viewer</li>
+    </ul>
+  </li>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  <li>🔐 <strong>Secure Admin Access</strong>
+    <ul>
+      <li>Authentication-protected interface</li>
+      <li>Role-ready architecture</li>
+    </ul>
+  </li>
 
-### `npm run eject`
+  <li>🌙 <strong>Single Dark Theme</strong>
+    <ul>
+      <li>No light mode</li>
+      <li>Optimized for long monitoring sessions</li>
+    </ul>
+  </li>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  <li>🖥️ <strong>Self-Hosted & Cost-Efficient</strong>
+    <ul>
+      <li>Runs on personal hardware</li>
+      <li>No mandatory cloud dependencies</li>
+      <li>Designed for 24/7 uptime</li>
+    </ul>
+  </li>
+</ul>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<hr/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<h2>🧠 Design Philosophy</h2>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<ul>
+  <li>Clarity over clutter</li>
+  <li>Stability over flash</li>
+  <li>Trends over raw numbers</li>
+  <li>Admin-first UX</li>
+</ul>
 
-## Learn More
+<blockquote>
+  <em>“What is happening on my server right now?”</em>
+</blockquote>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<hr/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<h2>🏗️ Architecture Overview</h2>
 
-### Code Splitting
+<h3>Frontend</h3>
+<ul>
+  <li>React (JavaScript)</li>
+  <li>Vite</li>
+  <li>React Icons</li>
+  <li>Static hosting (Vercel / Netlify)</li>
+  <li>Dark theme only</li>
+</ul>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<h3>Backend</h3>
+<ul>
+  <li>Self-hosted on personal server</li>
+  <li>REST APIs</li>
+  <li>Database & lightweight LLMs hosted locally</li>
+  <li>Secure reverse tunnel exposure</li>
+</ul>
 
-### Analyzing the Bundle Size
+<h3>Server</h3>
+<ul>
+  <li>Ubuntu Server (no GUI)</li>
+  <li>Docker-ready architecture</li>
+  <li>Built for future expansion</li>
+</ul>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<hr/>
 
-### Making a Progressive Web App
+<h2>📁 Project Structure</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<pre>
+aurora-admin/
+├── public/
+├── src/
+│   ├── api/          # API communication layer
+│   ├── components/   # Layout, UI, charts
+│   ├── context/      # Global state
+│   ├── hooks/        # Polling & logic
+│   ├── pages/        # Application pages
+│   ├── styles/       # Global & theme styles
+│   ├── utils/        # Helpers
+│   ├── App.js        # App entry & routing
+│   └── main.jsx
+├── index.html
+└── README.md
+</pre>
 
-### Advanced Configuration
+<hr/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<h2>🔄 Application Flow</h2>
 
-### Deployment
+<ol>
+  <li>User opens the admin URL</li>
+  <li>Authentication check</li>
+  <li>Dashboard loads with live server status</li>
+  <li>Navigation via sidebar:
+    <ul>
+      <li>Dashboard</li>
+      <li>Services</li>
+      <li>Logs</li>
+      <li>Resources</li>
+      <li>Storage</li>
+      <li>Security</li>
+      <li>Settings</li>
+    </ul>
+  </li>
+  <li>Continuous polling updates the UI</li>
+  <li>Secure logout ends the session</li>
+</ol>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<hr/>
 
-### `npm run build` fails to minify
+<h2>🛡️ Security Model</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<ul>
+  <li>Protected admin routes</li>
+  <li>Backend isolated from frontend hosting</li>
+  <li>No public server exposure</li>
+  <li>Designed to work behind CGNAT</li>
+  <li>Reverse-tunnel ready (Cloudflare or alternatives)</li>
+</ul>
+
+<hr/>
+
+<h2>🚀 Deployment Strategy</h2>
+
+<h3>Frontend</h3>
+<ul>
+  <li>Deployed using Vercel / Netlify</li>
+  <li>Static build, zero backend exposure</li>
+</ul>
+
+<h3>Backend</h3>
+<ul>
+  <li>Hosted on personal Ubuntu Server</li>
+  <li>Exposed via secure reverse tunnel</li>
+  <li>No static IP required</li>
+</ul>
+
+<p>
+<strong>Result:</strong> Near-zero hosting cost.
+</p>
+
+<hr/>
+
+<h2>🔮 Roadmap</h2>
+
+<ul>
+  <li>Docker-based service orchestration</li>
+  <li>Kubernetes support (optional)</li>
+  <li>Alerting system (email / webhook)</li>
+  <li>Multi-server monitoring</li>
+  <li>Role-based access control</li>
+  <li>Mobile-friendly admin UI</li>
+</ul>
+
+<hr/>
+
+<h2>🤝 Contributors</h2>
+
+<ul>
+  <li><strong>Monic Auditya A</strong> — Architecture & Deployment </li>
+  <li><strong>Manoharan</strong> — Frontend UI & UX </li>
+  <li><strong>Team:</strong> Manoic </li>
+</ul>
+
+<hr/>
+
+<h2>📜 License</h2>
+
+<p>
+This project is under active development.
+A license will be added after the first stable release.
+</p>
+
+<hr/>
+
+<h2>🧭 Final Note</h2>
+
+<p>
+Aurora is not just a dashboard.
+</p>
+
+<p>
+<strong>It is the command center for your infrastructure.</strong>
+</p>
+
+<p align="center">
+  <strong>Simple • Dark • Powerful</strong>
+</p>
